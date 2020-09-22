@@ -58,5 +58,4 @@ you should see the following:
 in your working directory write the following: "sudo pip install tweepy"
 
 you should see the following:
-
 ![Image of instlling tweepy](https://github.com/gamblinflanagan/CS490_Project1/issues/2#issue-706760938)
