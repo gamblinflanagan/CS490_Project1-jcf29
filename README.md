@@ -1,18 +1,18 @@
-#CS490_Project1
-This is the first project the CS 490 of which the purpose is to currently dyanmically display tweets pertaining to a paticular food recipe
+# CS490_Project1
+## This is the first project the CS 490 of which the purpose is to currently dyanmically display tweets pertaining to a paticular food recipe
 
-Languages used:
+### Languages used:
 python
 html
 css
 
-APIs used:
+### APIs used:
 twitter API
 tweepy
 flask
 
 
-USING THE TWITTER API
+### USING THE TWITTER API
 
 First need to make a twitter account IF YOU DONT ALREADY HAVE ONE here:
 https://twitter.com
@@ -36,7 +36,7 @@ access_token_secret = os.environ['ACCESS SECRET TOKEN GOES HERE']
 
 
 
-INSTALLING PIP
+### INSTALLING PIP
 pip or any up to date de facto standard package-managment system will be needed for the next APIs (flask, tweepy)
 PIP is recommended
 
@@ -44,7 +44,7 @@ INSTRUCTIONS ON HOW TO DOWNLOAD PIP HERE - https://pip.pypa.io/en/stable/install
 
 
 
-INSTALLING FLASK
+### INSTALLING FLASK
 
 in your working directory write the following: "sudo pip install flask"
 
@@ -52,7 +52,7 @@ in your working directory write the following: "sudo pip install flask"
 you should see the following:
 
 
-INSTALLING TWEEPY
+### INSTALLING TWEEPY
 
 in your working directory write the following: "sudo pip install tweepy"
 
