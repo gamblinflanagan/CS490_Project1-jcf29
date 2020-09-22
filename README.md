@@ -50,6 +50,7 @@ in your working directory write the following: "sudo pip install flask"
 
 
 you should see the following:
+![Image of instlling tweepy](https://github.com/gamblinflanagan/CS490_Project1/issues/1#issue-706760852)
 
 
 ### INSTALLING TWEEPY
@@ -58,6 +59,4 @@ in your working directory write the following: "sudo pip install tweepy"
 
 you should see the following:
 
-![Image of instlling tweepy](https://github.com/gamblinflanagan/CS490_Project1/issues/1#issue-706760852)
-
-
+![Image of instlling tweepy](https://github.com/gamblinflanagan/CS490_Project1/issues/2#issue-706760938)
