@@ -58,6 +58,6 @@ in your working directory write the following: "sudo pip install tweepy"
 
 you should see the following:
 
-![Image of Yaktocat](https://octodex.github.com/images/yaktocat.png)
+![Image of class](Screen Shot 2020-09-17 at 6.31.46 PM)
 
 
