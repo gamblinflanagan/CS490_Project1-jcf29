@@ -58,6 +58,6 @@ in your working directory write the following: "sudo pip install tweepy"
 
 you should see the following:
 
-![Image of class](Screen Shot 2020-09-17 at 6.31.46 PM)
+![Image of instlling tweepy](https://github.com/gamblinflanagan/CS490_Project1/issues/1#issue-706760852)
 
 
