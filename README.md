@@ -34,10 +34,15 @@ If your keys are not displayed click the view Keys button
 
 copy and add keys to the code save the keys in a discrete location
 
-consumer_key = os.environ['API KEY GOES HERE']
-consumer_secret = os.environ['API SECRET KEY GOES HERE']
-access_token = os.environ['BEARER TOKEN GOES HERE']
-access_token_secret = os.environ['ACCESS SECRET TOKEN GOES HERE']
+create a .env file copy this code and add the correct keys to each line
+
+export TWEEPY_CONSUMER_KEY='API KEY'
+
+export TWEEPY_CONSUMER_SECRET='SECRET API KEY'
+
+export TWEEPY_ACCESS_TOKEN='ACCESS TOKEN'
+
+export TWEEPY_ACCESS_TOKEN_SECRET='ACCESS SECRET TOKEN'
 
 
 if for some reason you need to access your keys again after clsing the page go back to apply for a developer page click the aply button and you will be logged back into your account
