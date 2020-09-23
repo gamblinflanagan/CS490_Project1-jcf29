@@ -1,12 +1,14 @@
 # CS490_Project1
 ## This is the first project the CS 490 of which the purpose is to currently dyanmically display tweets pertaining to a paticular food recipe
 
+
 ### Languages used:
-python
+#### python
 
 html
 
 css
+
 
 ### APIs used:
 twitter API
@@ -14,6 +16,7 @@ twitter API
 tweepy
 
 flask
+
 
 
 ### USING THE TWITTER API
@@ -49,11 +52,13 @@ if for some reason you need to access your keys again after clsing the page go b
 
 
 
+
 ### INSTALLING PIP
 pip or any up to date de facto standard package-managment system will be needed for the next APIs (flask, tweepy)
 PIP is recommended
 
 INSTRUCTIONS ON HOW TO DOWNLOAD PIP HERE - https://pip.pypa.io/en/stable/installing/
+
 
 
 
