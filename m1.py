@@ -38,9 +38,13 @@ def GetTweets(theTag):
         if counter == maxx: #if the maximum number of tweets was pulled
             break
     return rst
+    
+    
 
+tagnum = random.randint(0, 6)
+taglst = ["#alfredo", "#pancakes", "#steak", "#chickenparm", "#frenchtoast", "#cinnamonbon", "#calzone"] #list of hastags to search
 
-tag="#alfredo"                   #holds a string value which is the hashtag that GetTweets will use
+tag=taglst[tagnum]               #holds a string value which is the hashtag that GetTweets will use picked at random based on value of tagnum
 quote = str(GetTweets(tag))      #string that holds the return value (which is a tweet) from GetTweets
 print(quote)
 
