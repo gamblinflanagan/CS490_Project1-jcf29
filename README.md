@@ -3,7 +3,7 @@
 
 
 ### Languages used:
-#### python
+python
 
 html
 
@@ -39,14 +39,15 @@ copy and add keys to the code save the keys in a discrete location
 
 create a .env file copy this code and add the correct keys to each line
 
-export TWEEPY_CONSUMER_KEY='API KEY'
+* export TWEEPY_CONSUMER_KEY='API KEY'
 
-export TWEEPY_CONSUMER_SECRET='SECRET API KEY'
+* export TWEEPY_CONSUMER_SECRET='SECRET API KEY'
 
-export TWEEPY_ACCESS_TOKEN='ACCESS TOKEN'
+* export TWEEPY_ACCESS_TOKEN='ACCESS TOKEN'
 
-export TWEEPY_ACCESS_TOKEN_SECRET='ACCESS SECRET TOKEN'
+* export TWEEPY_ACCESS_TOKEN_SECRET='ACCESS SECRET TOKEN'
 
+type in the command line source filename.env
 
 if for some reason you need to access your keys again after clsing the page go back to apply for a developer page click the aply button and you will be logged back into your account
 
