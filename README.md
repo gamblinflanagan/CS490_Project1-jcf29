@@ -3,12 +3,16 @@
 
 ### Languages used:
 python
+
 html
+
 css
 
 ### APIs used:
 twitter API
+
 tweepy
+
 flask
 
 
@@ -23,8 +27,11 @@ https://developer.twitter.com/en/apply-for-access
 Next Fill out the Application and create a new project
 
 The website will then take you to your dashboard
+![Image of instlling tweepy](https://github.com/gamblinflanagan/CS490_Project1/issues/3#issue-706764966)
 
 If your keys are not displayed click the view Keys button
+![Image of instlling tweepy](https://github.com/gamblinflanagan/CS490_Project1/issues/4#issue-706765206)
+
 copy and add keys to the code save the keys in a discrete location
 
 consumer_key = os.environ['API KEY GOES HERE']
@@ -33,6 +40,7 @@ access_token = os.environ['BEARER TOKEN GOES HERE']
 access_token_secret = os.environ['ACCESS SECRET TOKEN GOES HERE']
 
 
+if for some reason you need to access your keys again after clsing the page go back to apply for a developer page click the aply button and you will be logged back into your account
 
 
 
