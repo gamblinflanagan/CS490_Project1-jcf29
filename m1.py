@@ -16,6 +16,9 @@ consumer_secret = os.environ['TWEEPY_CONSUMER_SECRET']
 access_token = os.environ['TWEEPY_ACCESS_TOKEN']
 access_token_secret = os.environ['TWEEPY_ACCESS_TOKEN_SECRET']
 
+''' This Keys is needed to access spoonacular API, the value is stored in another file as it is confidential '''
+spoonacular_key = os.environ['SPOONACULAR_API_KEY']
+
 ''' This Funcion uses the tweepy API to dynamically pulls tweets from twitter with a paticular hashtag '''
 def GetTweets(theTag):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret) #authenticates twitter keys

@@ -17,6 +17,9 @@ tweepy
 
 flask
 
+spoonacular
+
+heroku (optional)
 
 
 ### USING THE TWITTER API
@@ -78,3 +81,20 @@ in your working directory write the following: "sudo pip install tweepy"
 
 you should see the following:
 ![Image of instlling tweepy](https://github.com/gamblinflanagan/CS490_Project1/issues/2#issue-706760938)
+
+
+### INSTALLING SPOONACULAR
+
+First need to make a twitter account IF YOU DONT ALREADY HAVE ONE here:
+https://spoonacular.com/api/docs/recipes-api
+
+in your working directory write the following: "sudo pip install spoonacular"
+
+
+### INSTALLING HEROKU
+
+First need to make a twitter account IF YOU DONT ALREADY HAVE ONE here:
+https://www.heroku.com
+
+in your working directory write the following: "npm install -g heroku"
+heroku may take a long time to install
