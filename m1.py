@@ -56,7 +56,7 @@ print(quote)
 
 ''' This Function creates the front end portion of the web application '''
 app = flask.Flask(__name__)
-@app.route('/') # Python decorator
+@app.route('/', '/api', '/index', methods=['GET', 'POST', 'DELETE']) # Python decorator
 def index():
     #print("reached index method")
     
