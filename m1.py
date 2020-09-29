@@ -8,6 +8,10 @@ import sys
 import os
 import flask 
 import random
+import requests
+from requests.exceptions import HTTPError
+import spoonacular as sp
+import json
 
 
 ''' These Keys are needed to access twitters developer API, the values are stored in another file as they are confidential '''
@@ -42,12 +46,50 @@ def GetTweets(theTag):
             break
     return rst
     
+
+
+def Recipe(URL, plate):
+    rtlst = []
     
+    response = requests.get(URL)
+    response.encoding = 'utf-8'
+    text = response.text
+    json_response = json.loads(text)
+    
+    count = 0
+    for result in json_response['results']:
+        title = str(result['title'])
+        img = str(result['image'])
+        if plate in title:
+            rtlst.append(title)
+            rtlst.append(img)
+            break
+        count +=1
+    
+    return rtlst    
 
 tagnum = random.randint(0, 6)
-taglst = ["#alfredo", "#pancakes", "#steak", "#chickenparm", "#frenchtoast", "#cinnamonbon", "#calzone"] #list of hastags to search
+taglst = ["Gorgonzola", "pancakes", "steak", "chickenparm", "frenchtoast", "cinnamonbon", "calzone"] #list of hastags to search
+foodlst = ["Pasta-With-Gorgonzola-Sauce", "Pancakes", "Flank-Steak-with-Mushroom-Sauce", "Chicken-Wings", "Pumpkin-French-Toast", "Cinnamon-Rolls", "Sausage Calzone"]
 
-tag=taglst[tagnum]               #holds a string value which is the hashtag that GetTweets will use picked at random based on value of tagnum
+
+
+
+
+dish = str(foodlst[tagnum])
+url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey='+spoonacular_key+'&query='+dish
+dish = dish.replace("-", " ")
+resLst = Recipe(url, dish)
+name = str(resLst[0])
+image = str(resLst[1])
+#incredients = resLst[3]
+print(name+"\n"+image)
+
+
+
+
+
+tag=str("#"+taglst[tagnum])               #holds a string value which is the hashtag that GetTweets will use picked at random based on value of tagnum
 quote = str(GetTweets(tag))      #string that holds the return value (which is a tweet) from GetTweets
 print(quote)
 
