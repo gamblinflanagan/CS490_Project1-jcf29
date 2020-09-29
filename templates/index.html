@@ -1,12 +1,35 @@
 <html>
     <head>
-       <link rel="stylesheet" href="/static/style.css">
+      <link rel="stylesheet" href="/static/styles.css">
     </head>
     <body>
-      
-      <div class="twitter-text">
-        <label>{{ twitter_quote }}</label>
+      <div class="recipe-name">
+        <name>{{ the_name }}</name>
       </div>
-        
+      
+      <div class="recipe-center">
+        <figure>
+          <p><img src="{{ the_image }}"/>
+          <br>
+            <br>
+              <br>
+                <figcaption>{{ the_furl }}</figcaption>
+        </figure>
+        <div class="list">
+          <h2>Ingredients:</h2>
+          <ul>
+            {%for i in range(0, len)%} 
+  
+              <li>{{ingd[i]}}</li> 
+            {%endfor%} 
+          </ul>
+        </div>
+      </div>
+      
     </body>
+    
+    <div class="twitter-text">
+        <tweet>{{ twitter_quote }}</tweet>
+    </div>
+    
 </html>

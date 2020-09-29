@@ -52,7 +52,7 @@ def GetTweets(theTag):
  
 def Recipe(URL, plate):
     rtlst = []
-    ingrds = ""
+    ingrds = []
     ident = ""
     
     response = requests.get(URL)
@@ -71,7 +71,7 @@ def Recipe(URL, plate):
             break
         #count +=1
     
-    URL = "https://api.spoonacular.com/recipes/"+ident+"/ingredientWidget.json"+"?apiKey="+spoonacular_key
+    URL = "https://api.spoonacular.com/recipes/"+ident+"/priceBreakdownWidget.json"+"?apiKey="+spoonacular_key
     response = requests.get(URL)
     response.encoding = 'utf-8'
     text = response.text
@@ -79,10 +79,12 @@ def Recipe(URL, plate):
     
     for i in json_response['ingredients']:
         name = str(i['name'])
-        if name not in ingrds:
-            ingrds += name+"\n"
+        unit = str(i['amount'] ['us'] ['unit'])
+        value = str(i['amount'] ['us'] ['value'])
+        indg = value+unit+" "+name
+        if indg not in ingrds:
+            ingrds.append(indg)
     rtlst.append(ingrds)
-    
     
     return rtlst    
 
@@ -90,7 +92,7 @@ def Recipe(URL, plate):
 
 
 tagnum = random.randint(0, 6)
-taglst = ["Gorgonzola", "pancakes", "steak", "chickenparm", "frenchtoast", "cinnamonbon", "calzone"] #list of hastags to search
+taglst = ["Gorgonzola", "pancakes", "steak", "chickenparm", "frenchtoast", "cinnamonrolls", "calzone"] #list of hastags to search
 foodlst = ["Pasta-With-Gorgonzola-Sauce", "Pancakes", "Flank-Steak-with-Mushroom-Sauce", "Chicken-Wings", "Pumpkin-French-Toast", "Cinnamon-Rolls", "Sausage Calzone"]
 
 
@@ -99,12 +101,13 @@ foodlst = ["Pasta-With-Gorgonzola-Sauce", "Pancakes", "Flank-Steak-with-Mushroom
 
 dish = str(foodlst[tagnum])
 url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey='+spoonacular_key+'&query='+dish
+furl = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=APIKEY&query'+dish
 dish = dish.replace("-", " ")
 resLst = Recipe(url, dish)
 name = str(resLst[0])
 image = str(resLst[1])
-ingd = str(resLst[2])
-print(name+"\n"+image+"\n"+ingd)
+ingd = resLst[2]
+print(name+"\n"+image+"\n"+str(ingd)+"\n"+furl)
 
 
 
@@ -123,8 +126,12 @@ def index():
     print("reached index method")
     
     return flask.render_template(
-        "index.html",           #html file to render the front end portion of the web app
-        twitter_quote = quote   #sets value of tweet to be displayed to tweet pulled in previous function
+        "index.html",                       #html file to render the front end portion of the web app
+        twitter_quote = quote,              #sets value of tweet to be displayed to tweet pulled in previous function
+        the_name = name,                    #sets value of recipe name to be displayed to recipe name pulled in previous function
+        the_image = image,                  #sets value of recipe image to be displayed to recipe image pulled in previous function
+        len = len(ingd), ingd = ingd,       #sets value of ingredients to be displayed to ingredients pulled in previous function
+        the_furl = furl                     #sets value of url to be displayed to recipe url 
         )
 
 app.run(
@@ -132,3 +139,7 @@ app.run(
     host=os.getenv('IP', '0.0.0.0'),    #specifies what ip to run on
     #debug=True                          #run in debug mode
 )
+
+
+
+#<link rel="stylesheet" href="/static/style.css">
