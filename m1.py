@@ -23,6 +23,8 @@ access_token_secret = os.environ['TWEEPY_ACCESS_TOKEN_SECRET']
 ''' This Keys is needed to access spoonacular API, the value is stored in another file as it is confidential '''
 spoonacular_key = os.environ['SPOONACULAR_API_KEY']
 
+
+
 ''' This Funcion uses the tweepy API to dynamically pulls tweets from twitter with a paticular hashtag '''
 def GetTweets(theTag):
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret) #authenticates twitter keys
@@ -47,26 +49,45 @@ def GetTweets(theTag):
     return rst
     
 
-
+ 
 def Recipe(URL, plate):
     rtlst = []
+    ingrds = ""
+    ident = ""
     
     response = requests.get(URL)
     response.encoding = 'utf-8'
     text = response.text
     json_response = json.loads(text)
     
-    count = 0
+    #count = 0
     for result in json_response['results']:
+        ident = str(result['id'])
         title = str(result['title'])
         img = str(result['image'])
         if plate in title:
             rtlst.append(title)
             rtlst.append(img)
             break
-        count +=1
+        #count +=1
+    
+    URL = "https://api.spoonacular.com/recipes/"+ident+"/ingredientWidget.json"+"?apiKey="+spoonacular_key
+    response = requests.get(URL)
+    response.encoding = 'utf-8'
+    text = response.text
+    json_response = json.loads(text)
+    
+    for i in json_response['ingredients']:
+        name = str(i['name'])
+        if name not in ingrds:
+            ingrds += name+"\n"
+    rtlst.append(ingrds)
+    
     
     return rtlst    
+
+
+
 
 tagnum = random.randint(0, 6)
 taglst = ["Gorgonzola", "pancakes", "steak", "chickenparm", "frenchtoast", "cinnamonbon", "calzone"] #list of hastags to search
@@ -82,9 +103,8 @@ dish = dish.replace("-", " ")
 resLst = Recipe(url, dish)
 name = str(resLst[0])
 image = str(resLst[1])
-#incredients = resLst[3]
-print(name+"\n"+image)
-
+ingd = str(resLst[2])
+print(name+"\n"+image+"\n"+ingd)
 
 
 
@@ -100,7 +120,7 @@ print(quote)
 app = flask.Flask(__name__)
 @app.route('/') # Python decorator
 def index():
-    #print("reached index method")
+    print("reached index method")
     
     return flask.render_template(
         "index.html",           #html file to render the front end portion of the web app
