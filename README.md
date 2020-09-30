@@ -19,7 +19,6 @@ flask
 
 spoonacular
 
-heroku (optional)
 
 
 ### USING THE TWITTER API
@@ -85,16 +84,18 @@ you should see the following:
 
 ### INSTALLING SPOONACULAR
 
-First need to make a twitter account IF YOU DONT ALREADY HAVE ONE here:
+In your working directory write the following: "sudo pip install spoonacular"
+![Image of instlling spoonacular](https://github.com/gamblinflanagan/CS490_Project1-jcf29/blob/master/Images/install_spoonacular.png)
+
+Next need to make a twitter account IF YOU DONT ALREADY HAVE ONE here:
 https://spoonacular.com/api/docs/recipes-api
 
-in your working directory write the following: "sudo pip install spoonacular"
+Go to your spoonacular dashboard (you will be brouht here after your account is created)
 
+Click on Profile and then show API Key and your api key will be displayed
 
-### INSTALLING HEROKU
+copy and add keys to the code save the keys in a discrete location
 
-First need to make a twitter account IF YOU DONT ALREADY HAVE ONE here:
-https://www.heroku.com
+create a .env file copy this code and add the correct keys to each line
 
-in your working directory write the following: "npm install -g heroku"
-heroku may take a long time to install
+export SPOONACULAR_API_KEY='API KEY'

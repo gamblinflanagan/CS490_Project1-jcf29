@@ -49,38 +49,38 @@ def GetTweets(theTag):
     return rst
     
 
- 
+''' This Function uses the spoonacular api and requests library to get the recipe and recipe information ''' 
 def Recipe(URL, plate):
-    rtlst = []
-    ingrds = []
-    ident = ""
+    rtlst = []   #conatins recipe and recipie information
+    ingrds = []  #list of ingredients
+    ident = ""   #recipie id number
     
-    response = requests.get(URL)
+    response = requests.get(URL)     #gets response code from given url
     response.encoding = 'utf-8'
-    text = response.text
-    json_response = json.loads(text)
+    text = response.text             #gets content from response
+    json_response = json.loads(text) #puts content in json format
     
     #count = 0
-    for result in json_response['results']:
-        ident = str(result['id'])
-        title = str(result['title'])
-        img = str(result['image'])
+    for result in json_response['results']: 
+        ident = str(result['id'])       #id of recipie
+        title = str(result['title'])    #name of recipie
+        img = str(result['image'])      #picture of recipie
         if plate in title:
             rtlst.append(title)
             rtlst.append(img)
             break
         #count +=1
     
-    URL = "https://api.spoonacular.com/recipes/"+ident+"/priceBreakdownWidget.json"+"?apiKey="+spoonacular_key
+    URL = "https://api.spoonacular.com/recipes/"+ident+"/priceBreakdownWidget.json"+"?apiKey="+spoonacular_key  #url for recipe info
     response = requests.get(URL)
     response.encoding = 'utf-8'
     text = response.text
     json_response = json.loads(text)
     
     for i in json_response['ingredients']:
-        name = str(i['name'])
-        unit = str(i['amount'] ['us'] ['unit'])
-        value = str(i['amount'] ['us'] ['value'])
+        name = str(i['name'])                     #ingreident name
+        unit = str(i['amount'] ['us'] ['unit'])   #unit of measurement
+        value = str(i['amount'] ['us'] ['value']) #amount of ingreident 
         indg = value+unit+" "+name
         if indg not in ingrds:
             ingrds.append(indg)
@@ -92,28 +92,28 @@ def Recipe(URL, plate):
 
 
 tagnum = random.randint(0, 6)
-taglst = ["Gorgonzola", "pancakes", "steak", "chickenparm", "frenchtoast", "cinnamonrolls", "calzone"] #list of hastags to search
+taglst = ["Gorgonzola", "pancakes", "steak", "Chickenwings", "frenchtoast", "Cinnamonrolls", "calzone"] #list of hastags to search
 foodlst = ["Pasta-With-Gorgonzola-Sauce", "Pancakes", "Flank-Steak-with-Mushroom-Sauce", "Chicken-Wings", "Pumpkin-French-Toast", "Cinnamon-Rolls", "Sausage Calzone"]
+#list of foods for spoonacualr to search
 
 
 
 
-
-dish = str(foodlst[tagnum])
-url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey='+spoonacular_key+'&query='+dish
-furl = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=APIKEY&query'+dish
-dish = dish.replace("-", " ")
-resLst = Recipe(url, dish)
-name = str(resLst[0])
-image = str(resLst[1])
-ingd = resLst[2]
+dish = str(foodlst[tagnum])                                                                      #holds string value of recipie that Recipe will return
+url = 'https://api.spoonacular.com/recipes/complexSearch?apiKey='+spoonacular_key+'&query='+dish #url for recipe
+furl = 'https://api.spoonacular.com/recipes/complexSearch?apiKey=APIKEY&query'+dish              #url to be displayed on web page
+dish = dish.replace("-", " ")                                                                    #recipe name used in function Recipe
+resLst = Recipe(url, dish)  #list containing recipe and information
+name = str(resLst[0])       #name of recipe
+image = str(resLst[1])      #image of recipe
+ingd = resLst[2]            #ingredients list
 print(name+"\n"+image+"\n"+str(ingd)+"\n"+furl)
 
 
 
 
-tag=str("#"+taglst[tagnum])               #holds a string value which is the hashtag that GetTweets will use picked at random based on value of tagnum
-quote = str(GetTweets(tag))      #string that holds the return value (which is a tweet) from GetTweets
+tag = str("#"+taglst[tagnum])      #holds a string value which is the hashtag that GetTweets will use picked at random based on value of tagnum
+quote = str(GetTweets(tag))        #string that holds the return value (which is a tweet) from GetTweets
 print(quote)
 
     
